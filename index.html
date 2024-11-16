@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training TR-103</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lobster&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        @media (max-width: 768px) {
+            .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-logo img {
+        max-width: 60px;
+    }
+
+    .header-text h1 {
+        font-size: 28px;
+    }
+
+    .week-btn, .day-btn {
+        padding: 12px 25px;
+        font-size: 14px;
+        margin: 8px;
+    }
+
+    .about h2 {
+        font-size: 22px;
+    }
+
+    .about p {
+        font-size: 16px;
+    }
+
+    footer {
+        font-size: 14px;
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+    .week-btn, .day-btn {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+
+    .about h2 {
+        font-size: 20px;
+    }
+
+    .about p {
+        font-size: 14px;
+    }
+
+    .header-text h1 {
+        font-size: 24px;
+    }
+
+    .extra-info h3 {
+        font-size: 1.2em;
+    }
+}
+        body {
+            background: linear-gradient(135deg, #f4fbfd 0%, #60b3d1 100%);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header with logo and title */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #012641;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo img {
+            max-width: 80px;
+            filter: brightness(1.1) contrast(1.1);
+            margin: 0 15px;
+        }
+
+        .header-text {
+            font-size: 24px;
+            text-align: center;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-text h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 32px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .about {
+            text-align: center;
+            margin: 20px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        /* Added spacing for name and details */
+        .about h2 {
+            font-size: 24px;
+            color: #012641;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .about p {
+            font-size: 18px;
+            color: #424242;
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+
+        .about p:last-child {
+            font-weight: 500;
+            color: #60b3d1;
+        }
+
+        .weeks-container {
+            text-align: center;
+            margin: 20px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .week-btn, .day-btn {
+            background: #012641;
+            color: white;
+            padding: 15px 35px;
+            margin: 12px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.5px;
+        }
+
+        .week-btn:hover, .day-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            background: #60b3d1;
+        }
+
+        .days-container {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer {
+            background: #012641;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            border-radius: 20px;
+            margin: 20px;
+            position: relative;
+            bottom: 0;
+            width: calc(100% - 40px);
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: 1px;
+        }
+
+        .extra-info {
+            margin: 20px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            text-align: justify;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .extra-info h3 {
+            margin-bottom: 20px;
+            color: #012641;
+            text-align: center;
+            font-size: 1.4em;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.5px;
+        }
+
+        .extra-info p {
+            margin-bottom: 25px;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #424242;
+            font-size: 16px;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        /* Adding hover effects to cards */
+        .about:hover, .weeks-container:hover, .extra-info:hover {
+            transform: translateY(-2px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Style for iframe */
+        .pdf-viewer {
+            display: none;
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 20px;
+            margin: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-logo">
+            <img src="gndec.png" alt="GNDEC Logo">
+        </div>
+
+        <div class="header-text">
+            <h1>Training TR-103 Report</h1>
+            <p>4 Week Training at CSIR-CMERI, Ludhiana</p>
+        </div>
+
+        <div class="header-logo">
+            <img src="csir.png" alt="CSIR Logo">
+        </div>
+    </div>
+
+    <main>
+        <div class="about">
+            <h2>By Kajal Yadav</h2>
+            <p>URN:2203585 / CRN:2115178</p>
+            <p>B.Tech CSE C2 D4 2021-2025</p>
+            <p>Guru Nanak Dev Engineering College Ludhiana</p>
+        </div>
+
+        <div class="weeks-container">
+            <button class="week-btn" onclick="showDays('week1')">Week 1</button>
+            <button class="week-btn" onclick="showDays('week2')">Week 2</button>
+            <button class="week-btn" onclick="showDays('week3')">Week 3</button>
+            <button class="week-btn" onclick="showDays('week4')">Week 4</button>
+        </div>
+
+        <div class="days-container" id="week1">
+            <button class="day-btn" onclick="showPDF('Day-1.pdf')">Day 1</button>
+            <button class="day-btn" onclick="showPDF('Day-2.pdf')">Day 2</button>
+            <button class="day-btn" onclick="showPDF('Day-3.pdf')">Day 3</button>
+            <button class="day-btn" onclick="showPDF('Day-4.pdf')">Day 4</button>
+        </div>
+
+        <div class="days-container" id="week2">
+            <button class="day-btn" onclick="showPDF('Day-5.pdf')">Day 5</button>
+            <button class="day-btn" onclick="showPDF('Day-6.pdf')">Day 6</button>
+            <button class="day-btn" onclick="showPDF('Day-7.pdf')">Day 7</button>
+            <button class="day-btn" onclick="showPDF('Day-8.pdf')">Day 8</button>
+        </div>
+
+        <div class="days-container" id="week3">
+            <button class="day-btn" onclick="showPDF('Day-9.pdf')">Day 9</button>
+            <button class="day-btn" onclick="showPDF('Day-10.pdf')">Day 10</button>
+            <button class="day-btn" onclick="showPDF('Day-11.pdf')">Day 11</button>
+            <button class="day-btn" onclick="showPDF('Day-12.pdf')">Day 12</button>
+            <button class="day-btn" onclick="showPDF('Day-13.pdf')">Day 13</button>
+        </div>
+
+        <div class="days-container" id="week4">
+            <button class="day-btn" onclick="showPDF('Day-14.pdf')">Day 14</button>
+            <button class="day-btn" onclick="showPDF('Day-15.pdf')">Day 15</button>
+            <button class="day-btn" onclick="showPDF('Day-16.pdf')">Day 16</button>
+            <button class="day-btn" onclick="showPDF('Day-17.pdf')">Day 17</button>
+            <button class="day-btn" onclick="showPDF('Day-18.pdf')">Day 18</button>
+        </div>
+
+        <iframe class="pdf-viewer" id="pdfViewer" src=""></iframe>
+        <div class="extra-info">
+            <h3>About Guru Nanak Dev Engineering College (GNDEC)</h3>
+            <p>GNDEC, established in 1956, is one of the oldest premier engineering institutes in northern India, offering diverse undergraduate and postgraduate programs. Renowned for its academic excellence, the college emphasizes practical learning and industry collaboration. Its commitment to innovation prepares students for successful careers in engineering.</p>
+        
+            <h3>About CSIR-CMERI</h3>
+            <p>CSIR-CMERI, a leading R&D institution in India, focuses on advanced technologies in mechanical engineering and is instrumental in innovation. Its Ludhiana branch specializes in post-harvest technology and farm machinery development, addressing agricultural challenges through research and development. The institute plays a key role in enhancing productivity and sustainability in the agricultural sector.</p>
+        </div>
+        
+    </main>
+
+    <footer>
+        <p>CSIR-CMERI, Ludhiana</p>
+        <p>&copy;2024 Kajal Yadav | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        function showDays(weekId) {
+            const daysContainers = document.querySelectorAll('.days-container');
+            daysContainers.forEach(container => {
+                if (container.id === weekId) {
+                    container.style.display = 'block';
+                } else {
+                    container.style.display = 'none';
+                }
+            });
+            document.getElementById('pdfViewer').style.display = 'none'; // Hide PDF viewer when changing weeks
+        }
+
+        function showPDF(pdfFile) {
+            const pdfViewer = document.getElementById('pdfViewer');
+            pdfViewer.src = pdfFile;
+            pdfViewer.style.display = 'block'; // Show PDF viewer when a day is clicked
+        }
+    </script>
+</body>
+</html>
